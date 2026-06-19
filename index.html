@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球探体育 · 数据与洞察</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f7f5f2;
+            color: #1e1e1e;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 —— 故事感的开场与承接 */
+        .hero {
+            background: linear-gradient(145deg, #11161b 0%, #1a232c 100%);
+            padding: 6rem 2rem 4.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 15%, #d4a373 50%, transparent 85%);
+        }
+
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #ecebe7;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            color: #d4a373;
+            font-weight: 400;
+        }
+
+        .hero-sub {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #b8b5ae;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem 4rem;
+        }
+
+        /* 叙事段落：承接、特点、温和结尾 */
+        .intro-text {
+            font-size: 1.05rem;
+            margin-bottom: 2.4rem;
+            color: #2c2c2c;
+        }
+
+        .intro-text a {
+            color: #a05f3b;
+            text-decoration: none;
+            border-bottom: 1px dotted #a05f3b;
+            transition: border-bottom 0.2s, color 0.2s;
+        }
+
+        .intro-text a:hover {
+            color: #7c4a2b;
+            border-bottom: 1px solid #7c4a2b;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #2b2b2b;
+            margin: 2.8rem 0 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: #d4a373;
+            margin-top: 6px;
+            border-radius: 2px;
+        }
+
+        /* 特点卡片：知识型列表 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.8rem;
+            margin: 2.2rem 0 2.8rem;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #ece7e2;
+            transition: box-shadow 0.25s, transform 0.2s;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+            border-color: #d4a37380;
+        }
+
+        .feature-item h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #1f2a35;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .feature-item p {
+            font-size: 0.94rem;
+            color: #3f3f3f;
+            line-height: 1.6;
+        }
+
+        .feature-item em {
+            font-style: normal;
+            color: #a05f3b;
+            font-weight: 450;
+        }
+
+        .scene-note {
+            background: #f0ede8;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin: 2.4rem 0 2.8rem;
+            border-left: 4px solid #d4a373;
+        }
+
+        .scene-note p {
+            font-size: 1rem;
+            color: #2b2b2b;
+        }
+
+        .scene-note strong {
+            font-weight: 500;
+            color: #1a232c;
+        }
+
+        .closing {
+            margin-top: 3.2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #dbd5cc;
+            font-size: 1.02rem;
+            color: #383838;
+        }
+
+        .closing a {
+            color: #a05f3b;
+            text-decoration: none;
+            border-bottom: 1px dotted #a05f3b;
+        }
+
+        .closing a:hover {
+            border-bottom-style: solid;
+            color: #7c4a2b;
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            font-size: 0.92rem;
+            color: #6f6a64;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 650px) {
+            .hero {
+                padding: 4rem 1.5rem 3.2rem;
+            }
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            .hero-sub {
+                font-size: 1rem;
+            }
+            .container {
+                padding: 2.2rem 1.2rem 3rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图：开场短句 + 承接 -->
+    <header class="hero">
+        <div class="hero-title">
+            从一场比赛<span>，</span>到一种理解
+        </div>
+        <div class="hero-sub">
+            赛事数据不只是数字的堆叠，它勾勒出战术的轮廓、球员的轨迹，以及胜负背后隐现的规律。<br>
+            当视线越过比分，我们开始看见另一种叙述。
+        </div>
+    </header>
+
+    <!-- 浅色正文区：承接段落、特点列表、温和结尾 -->
+    <main class="container">
+
+        <!-- 承接段落：从主题内容展开 -->
+        <div class="intro-text">
+            体育赛事的迷人之处，往往藏在普通观众容易忽略的细节里：一次传球的路线选择、防守阵型的伸缩节奏、核心球员在高压下的决策模式。这些片段若孤立看待，只是零散画面；但如果将它们置于时间轴与数据维度中重新观察，便会浮现出可被解读的脉络。正是基于这种视角，<a href="https://web-sportsscout.com">球探体育</a>围绕赛事信息构建了结构化的内容体系，帮助关注者从更完整的维度理解比赛。
+        </div>
+
+        <!-- 特点列表：知识型，卡片展示 -->
+        <div class="section-title">信息组织的特点</div>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>赛事时间线</h3>
+                <p>不止记录比分变化，还标注关键事件的发生节点与背景，让复盘成为有参照的阅读。</p>
+            </div>
+            <div class="feature-item">
+                <h3>数据语境化</h3>
+                <p>将控球率、传球成功率、射门分布等指标嵌入比赛阶段与战术场景中，而非孤立罗列。</p>
+            </div>
+            <div class="feature-item">
+                <h3>队伍与球员档案</h3>
+                <p>整合近期表现、交锋记录与阵容轮换信息，为分析提供连贯的参考基线。</p>
+            </div>
+            <div class="feature-item">
+                <h3>趋势摘要</h3>
+                <p>从联赛周期或杯赛进程里提炼出节奏变化——比如某队在密集赛程下的体能分配模式。</p>
+            </div>
+        </div>
+
+        <!-- 借用“场景”叙述让内容更具体，但不单独设置场景章节，而是融合在承接中 -->
+        <div class="scene-note">
+            <p><strong>一个常见的场景：</strong> 当两支打法相近的球队相遇，比赛的胜负往往取决于细微的执行偏差。此时如果只看最终比分，很可能错过那些关键的转折节点——比如一次阵型拉开后的边路空当，或是门将出击时机的细微差异。而系统化地回溯事件链条，能帮助观者更清晰地识别这些“隐形分水岭”。</p>
+        </div>
+
+        <!-- 温和结尾：保持知识型语气，再次自然嵌入链接 -->
+        <div class="closing">
+            如果你对比赛的理解不止于结果，而是希望从结构和数据中阅读体育的另一种叙事，那么持续关注赛事信息的组织方式会带来许多启发。<a href="https://web-sportsscout.com">球探体育</a>所秉持的正是这种克制的记录视角——不夸大数据的作用，也不忽略场上的细节。在每一条时间线、每一组统计背后，都是一段可供解读的比赛语言。
+        </div>
+
+        <div class="footnote">
+            基于公开赛事信息整理 · 内容仅供个人学习与参考
+        </div>
+
+    </main>
+
+</body>
+</html>
